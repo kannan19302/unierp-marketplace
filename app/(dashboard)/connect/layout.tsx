@@ -1,29 +1,6 @@
 "use client";
 
-import {
-  BarChart3,
-  BookOpen,
-  DollarSign,
-  Users,
-  Package,
-  Factory,
-  Truck,
-  Briefcase,
-  Folder,
-  ShoppingBag,
-  GraduationCap,
-  Stethoscope,
-  Wrench,
-  Building2,
-  Store,
-  LineChart,
-  Sparkles,
-  Grid,
-  MessageSquare,
-  Settings,
-  Cloud,
-  TrendingUp,
-} from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import {
   CommunicationTabLayout,
   COMMUNICATION_TABS,
