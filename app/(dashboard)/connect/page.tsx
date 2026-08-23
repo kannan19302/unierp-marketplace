@@ -5950,7 +5950,7 @@ function EmojiManager({ onClose }: { onClose: () => void }) {
         `http://localhost:3001/api/v1/communication/emoji?name=${name}`,
         {
           method: "POST",
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          credentials: "include",
           body: form,
         },
       );

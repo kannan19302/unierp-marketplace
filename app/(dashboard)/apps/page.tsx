@@ -626,9 +626,11 @@ export default function AppsHubPage() {
             </Link>
             <button
               onClick={() => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-                router.push("/login");
+                const idpOrigin = process.env.NEXT_PUBLIC_IDP_ORIGIN || "http://localhost:3005";
+                const postLogoutUri = typeof window !== "undefined" ? window.location.origin : "/";
+                window.location.assign(
+                  `${idpOrigin}/oidc/end_session?post_logout_redirect_uri=${encodeURIComponent(postLogoutUri)}`,
+                );
               }}
               className={styles.footerActionBtn}
             >
