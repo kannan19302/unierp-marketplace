@@ -561,8 +561,8 @@ export default function ConnectPage() {
     socket.on("typing", (payload: { userId: string; channelId: string }) => {
       if (!payload?.userId || payload.channelId !== currentRoomRef.current)
         return;
-      setTypingUsers((prev: any) => {
-        const next = new Map(prev);
+      setTypingUsers((prev) => {
+        const next = new Map<string, number>(prev);
         next.set(payload.userId, Date.now());
         return next;
       });
@@ -1005,8 +1005,8 @@ export default function ConnectPage() {
 
   const toggleBookmark = async (id: string) => {
     const isBookmarked = bookmarks.has(id);
-    setBookmarks((prev: any) => {
-      const next = new Set(prev);
+    setBookmarks((prev) => {
+      const next = new Set<string>(prev);
       isBookmarked ? next.delete(id) : next.add(id);
       return next;
     });
@@ -1014,8 +1014,8 @@ export default function ConnectPage() {
       await api.bookmark(id);
       await loadBookmarks();
     } catch {
-      setBookmarks((prev: any) => {
-        const next = new Set(prev);
+      setBookmarks((prev) => {
+        const next = new Set<string>(prev);
         isBookmarked ? next.add(id) : next.delete(id);
         return next;
       });
@@ -1024,15 +1024,15 @@ export default function ConnectPage() {
   const toggleMute = async (convId: string) => {
     try {
       const res = await api.toggleMute(convId);
-      setMutedConvs((prev: any) => {
-        const next = new Set(prev);
+      setMutedConvs((prev) => {
+        const next = new Set<string>(prev);
         res.muted ? next.add(convId) : next.delete(convId);
         return next;
       });
       await loadWorkspace();
     } catch {
-      setMutedConvs((prev: any) => {
-        const next = new Set(prev);
+      setMutedConvs((prev) => {
+        const next = new Set<string>(prev);
         next.has(convId) ? next.delete(convId) : next.add(convId);
         return next;
       });
@@ -1041,23 +1041,23 @@ export default function ConnectPage() {
   const toggleStar = async (convId: string) => {
     try {
       const res = await api.toggleStar(convId);
-      setStarredConvs((prev: any) => {
-        const next = new Set(prev);
+      setStarredConvs((prev) => {
+        const next = new Set<string>(prev);
         res.starred ? next.add(convId) : next.delete(convId);
         return next;
       });
       await loadWorkspace();
     } catch {
-      setStarredConvs((prev: any) => {
-        const next = new Set(prev);
+      setStarredConvs((prev) => {
+        const next = new Set<string>(prev);
         next.has(convId) ? next.delete(convId) : next.add(convId);
         return next;
       });
     }
   };
   const toggleSection = (id: string) =>
-    setCollapsedSections((prev: any) => {
-      const next = new Set(prev);
+    setCollapsedSections((prev) => {
+      const next = new Set<string>(prev);
       next.has(id) ? next.delete(id) : next.add(id);
       return next;
     });
@@ -1688,7 +1688,7 @@ export default function ConnectPage() {
                     </div>
                     <div className={styles.s35}>
                       <div className={styles.s36}>Presence</div>
-                      {PRESENCE_ORDER.map((p: any) => (
+                      {PRESENCE_ORDER.map((p) => (
                         <button
                           key={p}
                           onClick={() => {
@@ -2190,7 +2190,7 @@ export default function ConnectPage() {
                       className={styles.s80}
                     >
                       {(["ALL", "MENTIONS", "NONE"] as NotifyLevel[]).map(
-                        (lvl: any) => (
+                        (lvl) => (
                           <option key={lvl} value={lvl}>
                             {NOTIFY_LEVEL_LABELS[lvl]}
                           </option>

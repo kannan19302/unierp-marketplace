@@ -1368,7 +1368,7 @@ function CreateForm({
             }
             style={inp}
           >
-            {(Object.keys(RECURRENCE_LABELS) as RecurrenceRule[]).map((r: any) => (
+            {(Object.keys(RECURRENCE_LABELS) as RecurrenceRule[]).map((r) => (
               <option key={r} value={r}>
                 {RECURRENCE_LABELS[r]}
               </option>

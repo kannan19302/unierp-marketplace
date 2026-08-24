@@ -37,6 +37,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { RouteGuard, useApiClient } from "@kannan19302/framework";
+import { createOidcClient } from "@/lib/oidc-config";
 import { OnboardingChecklist } from "../../../src/components/OnboardingChecklist";
 
 interface AppDefinition {
@@ -625,12 +626,20 @@ export default function AppsHubPage() {
               <ChevronRight size={10} />
             </Link>
             <button
-              onClick={() => {
-                const idpOrigin = process.env.NEXT_PUBLIC_IDP_ORIGIN || "http://localhost:3005";
-                const postLogoutUri = typeof window !== "undefined" ? window.location.origin : "/";
-                window.location.assign(
-                  `${idpOrigin}/oidc/end_session?post_logout_redirect_uri=${encodeURIComponent(postLogoutUri)}`,
-                );
+              onClick={async () => {
+                try {
+                  await fetch("/api/session", {
+                    method: "DELETE",
+                    credentials: "include",
+                    signal: AbortSignal.timeout(5_000),
+                  });
+                } finally {
+                  // Includes client_id and a registered return URI, clears
+                  // local auth state, and ends the shared IdP session.
+                  window.location.replace(
+                    createOidcClient().buildLogoutUrl("http://localhost:4000/"),
+                  );
+                }
               }}
               className={styles.footerActionBtn}
             >

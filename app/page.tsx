@@ -39,6 +39,7 @@ import {
   Check,
 } from "lucide-react";
 import { APPS_CATALOG, type MarketplaceApp } from "./data/apps-catalog";
+import { BrandMark, ThemeQuickToggle } from "@kannan19302/ui";
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number; color?: string; style?: React.CSSProperties }>> = {
   CreditCard,
@@ -106,7 +107,7 @@ export default function MarketplaceHomePage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#090d16", color: "#f8fafc", fontFamily: "var(--font-sans, system-ui, sans-serif)" }}>
+    <div style={{ minHeight: "100vh", background: "var(--color-bg)", color: "var(--color-text)", fontFamily: "var(--font-sans, system-ui, sans-serif)" }}>
       
       {/* Global Top Navbar */}
       <header
@@ -125,9 +126,7 @@ export default function MarketplaceHomePage() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
-            <div style={{ width: "36px", height: "36px", borderRadius: "10px", background: "linear-gradient(135deg, #0ea5e9, #6366f1)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1.2rem", color: "#ffffff" }}>
-              🛒
-            </div>
+            <BrandMark compact size="md" />
             <div>
               <span style={{ fontSize: "1.2rem", fontWeight: 700, color: "#ffffff" }}>
                 UniERP <span style={{ color: "#38bdf8" }}>Marketplace</span>
@@ -146,6 +145,15 @@ export default function MarketplaceHomePage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <ThemeQuickToggle />
+          <a
+            href="http://localhost:3005/oidc/account"
+            aria-label="Open Account Center"
+            title="Account Center"
+            style={{ width: 34, height: 34, borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(255,255,255,.1)", color: "#fff", textDecoration: "none", fontWeight: 700 }}
+          >
+            U
+          </a>
           <Link href="/login" style={{ textDecoration: "none" }}>
             <button style={{ padding: "0.5rem 1rem", background: "rgba(255, 255, 255, 0.08)", color: "#ffffff", border: "1px solid rgba(255, 255, 255, 0.15)", borderRadius: "8px", cursor: "pointer", fontSize: "0.88rem", fontWeight: 600 }}>
               Publisher Login

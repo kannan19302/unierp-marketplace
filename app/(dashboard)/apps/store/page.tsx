@@ -286,8 +286,8 @@ export default function AppStorePage() {
   }, [loadApps]);
 
   const toggleCategory = (cat: string) => {
-    setSelectedCategories((prev: any) => {
-      const next = new Set(prev);
+    setSelectedCategories((prev) => {
+      const next = new Set<string>(prev);
       if (next.has(cat)) next.delete(cat);
       else next.add(cat);
       return next;
@@ -338,8 +338,8 @@ export default function AppStorePage() {
     setInstallingSlug(slug);
     try {
       await client.delete(`/admin/marketplace/uninstall/${slug}`);
-      setInstalledSlugs((prev: any) => {
-        const s = new Set(prev);
+      setInstalledSlugs((prev) => {
+        const s = new Set<string>(prev);
         s.delete(slug);
         return s;
       });
@@ -357,8 +357,8 @@ export default function AppStorePage() {
     try {
       if (isFav) {
         await client.delete(`/admin/marketplace/favorites/${slug}`);
-        setFavoriteSlugs((prev: any) => {
-          const s = new Set(prev);
+        setFavoriteSlugs((prev) => {
+          const s = new Set<string>(prev);
           s.delete(slug);
           return s;
         });
