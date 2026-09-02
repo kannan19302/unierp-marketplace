@@ -4329,6 +4329,7 @@ export default function ConnectPage() {
             removeConfirm && removeMemberFromChannel(removeConfirm.id)
           }
           title={`Remove ${removeConfirm?.name ?? ""} from #${activeConv?.name ?? ""}?`}
+          message="Are you sure you want to remove this member from the channel?"
           confirmLabel="Remove"
           variant="primary"
         />

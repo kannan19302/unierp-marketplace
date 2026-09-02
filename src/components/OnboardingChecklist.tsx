@@ -134,7 +134,7 @@ export function OnboardingChecklist({
           display: "flex",
           alignItems: "center",
           gap: 10,
-          padding: "14px 16px",
+          padding: "var(--space-3) var(--space-4)",
           border: 0,
           background: "transparent",
           color: "var(--color-text)",
@@ -161,7 +161,7 @@ export function OnboardingChecklist({
       </button>
 
       {expanded && (
-        <div id="marketplace-onboarding-steps" style={{ padding: "0 16px 16px" }}>
+        <div id="marketplace-onboarding-steps" style={{ padding: "0 var(--space-4) var(--space-4)" }}>
           <div
             role="progressbar"
             aria-label="Workspace setup progress"
