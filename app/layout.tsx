@@ -42,11 +42,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={inter.variable}
-      data-theme="meridian-dark"
+      data-theme="strata-dark"
+      data-platform="marketplace"
       suppressHydrationWarning
     >
       <body>
-        <ThemeProvider defaultSetting="meridian-dark">
+        <ThemeProvider defaultSetting="strata-dark" defaultPlatform="marketplace">
           <AuthShell>{children}</AuthShell>
         </ThemeProvider>
       </body>
